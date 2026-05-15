@@ -1,0 +1,43 @@
+{
+  "name": "mmitekk/faq_by_url",
+  "type": "drupal-custom-module",
+  "description": "Позволяет добавлять вопросы-ответы и привязывать их к страницам сайта по URL. Вывод осуществляется через блок в схеме блоков.",
+  "keywords": ["drupal", "faq", "url", "accordion", "block"],
+  "homepage": "https://github.com/Mmitekk/faq_by_url",
+  "license": "GPL-2.0-or-later",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Mmitekk",
+      "homepage": "https://github.com/Mmitekk",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/Mmitekk/faq_by_url/issues",
+    "source": "https://github.com/Mmitekk/faq_by_url"
+  },
+  "require": {
+    "drupal/core": "^9.5 || ^10 || ^11",
+    "drupal/path_alias": "*"
+  },
+  "require-dev": {
+    "drupal/devel": "^5"
+  },
+  "suggest": {
+    "drupal/admin_toolbar": "Удобная навигация по админ-меню Drupal"
+  },
+  "extra": {
+    "drupal": {
+      "packageName": "mmitekk/faq_by_url",
+      "version": "1.0.0",
+      "security-coverage": {
+        "status": "not-covered",
+        "message": "Покрытие безопасность не проверяется для этого модуля."
+      }
+    },
+    "installer-paths": {
+      "web/modules/custom/{$name}": ["type:drupal-custom-module"]
+    }
+  }
+}
