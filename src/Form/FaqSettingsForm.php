@@ -151,7 +151,7 @@ class FaqSettingsForm extends ConfigFormBase {
       ->save();
 
     // Invalidate cache so blocks pick up new colors immediately.
-    \Drupal::cache()->invalidateTags(['faq_item_list']);
+    \Drupal::service('cache_tags.invalidator')->invalidateTags(['faq_item_list']);
 
     parent::submitForm($form, $form_state);
   }
