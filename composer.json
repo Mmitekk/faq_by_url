@@ -5,7 +5,7 @@
   "keywords": ["drupal", "faq", "url", "accordion", "block"],
   "homepage": "https://github.com/Mmitekk/faq_by_url",
   "license": "GPL-2.0-or-later",
-  "minimum-stability": "dev",
+
   "authors": [
     {
       "name": "Mmitekk",
@@ -18,8 +18,7 @@
     "source": "https://github.com/Mmitekk/faq_by_url"
   },
   "require": {
-    "drupal/core": "^9.5 || ^10 || ^11",
-    "drupal/path_alias": "*"
+    "drupal/core": "^9.5 || ^10 || ^11"
   },
   "require-dev": {
     "drupal/devel": "^5"
