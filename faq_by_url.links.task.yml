@@ -1,0 +1,13 @@
+# Primary tab: список вопросов-ответов (активна по умолчанию)
+faq_by_url.list:
+  title: 'Вопросы-ответы'
+  route_name: entity.faq_item.collection
+  base_route: entity.faq_item.collection
+  weight: 0
+
+# Secondary tab: настройки модуля
+faq_by_url.settings:
+  title: 'Настройки'
+  route_name: faq_by_url.settings
+  base_route: entity.faq_item.collection
+  weight: 10
