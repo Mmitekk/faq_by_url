@@ -1,0 +1,280 @@
+/**
+ * @file
+ * Styles for the FAQ by URL accordion block.
+ *
+ * All visual colors are controlled via CSS custom properties (variables)
+ * that are set inline on the .faq-by-url-wrapper element from the
+ * module's configuration. This allows per-site color customization
+ * without modifying CSS files.
+ *
+ * Default values are provided here as fallbacks.
+ */
+
+/* ========================
+   CSS Custom Properties (defaults)
+   Overridden inline from module config.
+   ======================== */
+.faq-by-url-wrapper {
+  --faq-color-accent: #e95b18;
+  --faq-color-question-text: #333333;
+  --faq-color-answer-text: #555555;
+  --faq-color-border: #e0e0e0;
+  --faq-color-hover-bg: #e95b18;
+  --faq-color-item-hover-bg: #fafafa;
+  --faq-color-strong: #333333;
+}
+
+/* ========================
+   Wrapper
+   ======================== */
+.faq-by-url-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.faq-by-url-wrapper--empty {
+  padding: 20px 0;
+}
+
+/* ========================
+   Title
+   ======================== */
+.faq-by-url-title {
+  margin: 0 0 25px 0;
+  padding: 0;
+  line-height: 1.3;
+}
+
+@media (max-width: 768px) {
+  .faq-by-url-title {
+    margin-bottom: 18px;
+  }
+}
+
+/* ========================
+   List
+   ======================== */
+.faq-by-url-list {
+  border-top: 1px solid var(--faq-color-border);
+}
+
+/* ========================
+   Item
+   ======================== */
+.faq-by-url-item {
+  border-bottom: 1px solid var(--faq-color-border);
+  transition: background-color 0.2s ease;
+}
+
+.faq-by-url-item:hover {
+  background-color: var(--faq-color-item-hover-bg);
+}
+
+.faq-by-url-item--open:hover {
+  background-color: transparent;
+}
+
+/* ========================
+   Question (header row)
+   ======================== */
+.faq-by-url-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  cursor: pointer;
+  user-select: none;
+  gap: 16px;
+  transition: background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.faq-by-url-question:hover {
+  background-color: color-mix(in srgb, var(--faq-color-hover-bg) 10%, transparent);
+}
+
+.faq-by-url-question:focus {
+  outline: 2px solid var(--faq-color-accent);
+  outline-offset: -2px;
+  border-radius: 2px;
+}
+
+.faq-by-url-question__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.faq-by-url-counter {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--faq-color-accent);
+  flex-shrink: 0;
+  line-height: 1.5;
+  min-width: 24px;
+}
+
+.faq-by-url-question__text {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--faq-color-question-text);
+  line-height: 1.5;
+  transition: color 0.2s ease;
+}
+
+.faq-by-url-item--open .faq-by-url-question__text,
+.faq-by-url-question:hover .faq-by-url-question__text {
+  color: var(--faq-color-accent);
+}
+
+@media (max-width: 768px) {
+  .faq-by-url-question {
+    padding: 14px 12px;
+  }
+
+  .faq-by-url-question__text {
+    font-size: 14px;
+  }
+
+  .faq-by-url-counter {
+    font-size: 14px;
+  }
+}
+
+/* ========================
+   Toggle Icon (+/-)
+   ======================== */
+.faq-by-url-icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.faq-by-url-icon__plus,
+.faq-by-url-icon__minus {
+  position: absolute;
+  background-color: var(--faq-color-accent);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Horizontal bar (always visible) */
+.faq-by-url-icon__minus {
+  width: 16px;
+  height: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+/* Vertical bar (hidden when open) */
+.faq-by-url-icon__plus {
+  width: 2px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+/* Open state: rotate + to become -, effectively hide vertical bar */
+.faq-by-url-item--open .faq-by-url-icon__plus {
+  transform: translate(-50%, -50%) rotate(90deg);
+  opacity: 0;
+}
+
+.faq-by-url-item--open .faq-by-url-icon__minus {
+  background-color: var(--faq-color-accent);
+}
+
+@media (max-width: 768px) {
+  .faq-by-url-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .faq-by-url-icon__minus {
+    width: 14px;
+    height: 2px;
+  }
+
+  .faq-by-url-icon__plus {
+    width: 2px;
+    height: 14px;
+  }
+}
+
+/* ========================
+   Answer (collapsible body)
+   ======================== */
+.faq-by-url-answer {
+  overflow: hidden;
+  transition: max-height 0.35s ease-in-out;
+}
+
+.faq-by-url-answer__inner {
+  padding: 0 20px 20px 52px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--faq-color-answer-text);
+}
+
+.faq-by-url-answer__inner p {
+  margin: 0 0 12px 0;
+}
+
+.faq-by-url-answer__inner p:last-child {
+  margin-bottom: 0;
+}
+
+.faq-by-url-answer__inner ul,
+.faq-by-url-answer__inner ol {
+  margin: 8px 0;
+  padding-left: 24px;
+}
+
+.faq-by-url-answer__inner li {
+  margin-bottom: 6px;
+}
+
+.faq-by-url-answer__inner a {
+  color: var(--faq-color-accent);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--faq-color-accent) 30%, transparent);
+  transition: text-decoration-color 0.2s ease;
+}
+
+.faq-by-url-answer__inner a:hover {
+  text-decoration-color: var(--faq-color-accent);
+}
+
+.faq-by-url-answer__inner strong {
+  color: var(--faq-color-strong);
+}
+
+@media (max-width: 768px) {
+  .faq-by-url-answer__inner {
+    padding: 0 12px 16px 12px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+/* ========================
+   Empty message
+   ======================== */
+.faq-by-url-empty-message {
+  font-size: 15px;
+  color: #999999;
+  font-style: italic;
+  margin: 0;
+  padding: 15px 0;
+}

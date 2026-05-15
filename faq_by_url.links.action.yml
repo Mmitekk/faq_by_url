@@ -1,0 +1,5 @@
+entity.faq_item.add_form:
+  title: 'Добавить вопрос-ответ'
+  route_name: entity.faq_item.add_form
+  appears_on:
+    - entity.faq_item.collection

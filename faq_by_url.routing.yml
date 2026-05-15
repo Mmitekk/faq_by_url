@@ -1,0 +1,55 @@
+entity.faq_item.collection:
+  path: '/admin/config/content/faq-by-url'
+  defaults:
+    _entity_list: 'faq_item'
+    _title: 'Вопросы-ответы (FAQ by URL)'
+  requirements:
+    _permission: 'administer faq by url'
+  options:
+    _admin_route: TRUE
+
+entity.faq_item.add_form:
+  path: '/admin/config/content/faq-by-url/add'
+  defaults:
+    _entity_form: 'faq_item.add'
+    _title: 'Добавить вопрос-ответ'
+  requirements:
+    _permission: 'administer faq by url'
+  options:
+    _admin_route: TRUE
+
+entity.faq_item.edit_form:
+  path: '/admin/config/content/faq-by-url/{faq_item}/edit'
+  defaults:
+    _entity_form: 'faq_item.edit'
+    _title: 'Редактировать вопрос-ответ'
+  requirements:
+    _permission: 'administer faq by url'
+  options:
+    _admin_route: TRUE
+    parameters:
+      faq_item:
+        type: 'entity:faq_item'
+
+entity.faq_item.delete_form:
+  path: '/admin/config/content/faq-by-url/{faq_item}/delete'
+  defaults:
+    _entity_form: 'faq_item.delete'
+    _title: 'Удалить вопрос-ответ'
+  requirements:
+    _permission: 'administer faq by url'
+  options:
+    _admin_route: TRUE
+    parameters:
+      faq_item:
+        type: 'entity:faq_item'
+
+faq_by_url.settings:
+  path: '/admin/config/content/faq-by-url/settings'
+  defaults:
+    _form: '\Drupal\faq_by_url\Form\FaqSettingsForm'
+    _title: 'Настройки FAQ by URL'
+  requirements:
+    _permission: 'administer faq by url'
+  options:
+    _admin_route: TRUE

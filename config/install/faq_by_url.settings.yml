@@ -1,0 +1,11 @@
+block_title: 'Часто задаваемые вопросы'
+empty_message: ''
+show_counter: true
+open_first: false
+color_accent: '#e95b18'
+color_question_text: '#333333'
+color_answer_text: '#555555'
+color_border: '#e0e0e0'
+color_hover_bg: '#e95b18'
+color_item_hover_bg: '#fafafa'
+color_strong: '#333333'

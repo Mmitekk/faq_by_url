@@ -1,0 +1,9 @@
+faq_block:
+  version: VERSION
+  css:
+    theme:
+      css/faq-block.css: {}
+  js:
+    js/faq-block.js: {}
+  dependencies:
+    - core/drupal

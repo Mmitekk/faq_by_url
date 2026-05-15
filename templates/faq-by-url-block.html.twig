@@ -1,0 +1,56 @@
+{#
+/**
+ * @file
+ * Template for the FAQ by URL block.
+ *
+ * Available variables:
+ * - title: The block title.
+ * - items: Array of FAQ items, each containing:
+ *   - id: The FAQ item ID.
+ *   - question: The question text.
+ *   - answer: The rendered answer HTML.
+ *   - counter: The question number (or NULL if disabled).
+ *   - is_first: Whether this is the first item (for auto-open).
+ * - empty_message: Message to show when no items found.
+ * - css_variables: Inline CSS custom properties string from module config.
+ */
+#}
+
+{% if items is not empty %}
+  <div class="faq-by-url-wrapper" style="{{ css_variables }}">
+    {% if title %}
+      <h2 class="faq-by-url-title">{{ title }}</h2>
+    {% endif %}
+
+    <div class="faq-by-url-list">
+      {% for item in items %}
+        <div class="faq-by-url-item{{ item.is_first ? ' faq-by-url-item--open' : '' }}" data-faq-id="{{ item.id }}">
+          <div class="faq-by-url-question" role="button" aria-expanded="{{ item.is_first ? 'true' : 'false' }}" tabindex="0">
+            <div class="faq-by-url-question__inner">
+              {% if item.counter %}
+                <span class="faq-by-url-counter">{{ item.counter }}.</span>
+              {% endif %}
+              <span class="faq-by-url-question__text">{{ item.question }}</span>
+            </div>
+            <span class="faq-by-url-icon" aria-hidden="true">
+              <span class="faq-by-url-icon__plus"></span>
+              <span class="faq-by-url-icon__minus"></span>
+            </span>
+          </div>
+          <div class="faq-by-url-answer"{{ not item.is_first ? ' style="display:none;"' : '' }}>
+            <div class="faq-by-url-answer__inner">
+              {{ item.answer|raw }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% elseif empty_message %}
+  <div class="faq-by-url-wrapper faq-by-url-wrapper--empty" style="{{ css_variables }}">
+    {% if title %}
+      <h2 class="faq-by-url-title">{{ title }}</h2>
+    {% endif %}
+    <p class="faq-by-url-empty-message">{{ empty_message }}</p>
+  </div>
+{% endif %}

@@ -1,0 +1,13 @@
+faq_by_url.admin:
+  title: 'Вопросы-ответы (FAQ by URL)'
+  description: 'Управление вопросами-ответами с привязкой к URL страниц.'
+  parent: system.admin_config_content
+  route_name: entity.faq_item.collection
+  weight: 100
+
+faq_by_url.settings:
+  title: 'Настройки FAQ by URL'
+  description: 'Настройки модуля FAQ by URL.'
+  parent: faq_by_url.admin
+  route_name: faq_by_url.settings
+  weight: 101

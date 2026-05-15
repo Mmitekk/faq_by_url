@@ -1,0 +1,37 @@
+faq_by_url.settings:
+  type: config_object
+  label: 'FAQ by URL settings'
+  mapping:
+    block_title:
+      type: string
+      label: 'Заголовок блока FAQ'
+    empty_message:
+      type: string
+      label: 'Сообщение при отсутствии вопросов'
+    show_counter:
+      type: boolean
+      label: 'Показывать нумерацию вопросов'
+    open_first:
+      type: boolean
+      label: 'Раскрывать первый вопрос по умолчанию'
+    color_accent:
+      type: string
+      label: 'Акцентный цвет'
+    color_question_text:
+      type: string
+      label: 'Цвет текста вопроса'
+    color_answer_text:
+      type: string
+      label: 'Цвет текста ответа'
+    color_border:
+      type: string
+      label: 'Цвет разделительных линий'
+    color_hover_bg:
+      type: string
+      label: 'Фон вопроса при наведении'
+    color_item_hover_bg:
+      type: string
+      label: 'Фон элемента при наведении'
+    color_strong:
+      type: string
+      label: 'Цвет жирного текста в ответе'
