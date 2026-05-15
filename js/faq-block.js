@@ -12,10 +12,14 @@
   /**
    * Toggle FAQ item open/closed state.
    *
+   * When opening an item, all other items in the same wrapper are closed
+   * so that only one FAQ answer is visible at a time (exclusive accordion).
+   *
    * @param {HTMLElement} item - The .faq-by-url-item element.
+   * @param {HTMLElement} wrapper - The .faq-by-url-wrapper parent element.
    * @param {boolean} forceState - Optional: true to open, false to close.
    */
-  function toggleFaqItem(item, forceState) {
+  function toggleFaqItem(item, wrapper, forceState) {
     var isOpen = item.classList.contains('faq-by-url-item--open');
     var shouldOpen = typeof forceState === 'boolean' ? forceState : !isOpen;
 
@@ -24,6 +28,16 @@
 
     if (!answer || !question) {
       return;
+    }
+
+    // When opening, close all other items in the same wrapper first.
+    if (shouldOpen && !isOpen && wrapper) {
+      var openItems = wrapper.querySelectorAll('.faq-by-url-item--open');
+      openItems.forEach(function (openItem) {
+        if (openItem !== item) {
+          toggleFaqItem(openItem, null, false);
+        }
+      });
     }
 
     if (shouldOpen && !isOpen) {
@@ -102,14 +116,16 @@
       // Click handler.
       question.addEventListener('click', function (e) {
         e.preventDefault();
-        toggleFaqItem(item);
+        var wrapper = item.closest('.faq-by-url-wrapper');
+        toggleFaqItem(item, wrapper);
       });
 
       // Keyboard handler (Enter and Space).
       question.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ' || e.keyCode === 13 || e.keyCode === 32) {
           e.preventDefault();
-          toggleFaqItem(item);
+          var wrapper = item.closest('.faq-by-url-wrapper');
+          toggleFaqItem(item, wrapper);
         }
       });
     });
